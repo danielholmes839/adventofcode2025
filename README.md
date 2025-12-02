@@ -3,5 +3,5 @@
 Run with:
 
 ```sh
-cargo run --lib day1 data/day1.txt
+cargo run --bin day1 data/day1.txt
 ```
