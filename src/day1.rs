@@ -32,7 +32,13 @@ fn rotations_past_0(initial_rotation: i32, direction: i32, turns: i32) -> i32 {
 }
 
 fn main() {
-    let data = std::fs::read_to_string("data/day1.txt").unwrap();
+    let path = std::env::args()
+        .nth(1)
+        .unwrap_or_else(|| "data/day1.txt".to_string());
+
+    println!("reading {}", path);
+
+    let data = std::fs::read_to_string(path).unwrap();
 
     let mut password_part2 = 0;
     let mut password_part1 = 0;
@@ -47,7 +53,6 @@ fn main() {
         };
 
         let turns: i32 = line.get(1..).unwrap().parse().unwrap();
-        
 
         rotation = (rotation + direction * turns).rem_euclid(100);
 
@@ -59,7 +64,10 @@ fn main() {
         password_part2 += rotations_past_0(initial_rotation, direction, turns);
     });
 
-    println!("password: {}, password part2: {}", password_part1, password_part2);
+    println!(
+        "password: {}, password part2: {}",
+        password_part1, password_part2
+    );
 }
 
 #[cfg(test)]
