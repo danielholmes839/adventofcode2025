@@ -25,8 +25,39 @@ for ingredient in ingredients:
         if ingredient <= rangemax and  ingredient >= rangemin:
             part1 += 1
             break
-            
+ 
+
+def merge_ranges(ranges):
+    grouped_ranges = []
+
+    for (rmin, rmax) in ranges:
+        grouped = False
+        for i, (grmin, grmax) in enumerate(grouped_ranges):
+            if (rmin >= grmin and rmin <= grmax) or (rmax >= grmin and rmax <= grmax):
+                grouped_ranges[i] = (min(rmin, grmin), max(rmax, grmax))
+                grouped = True
+                break
+        
+        if not grouped:
+            grouped_ranges.append((rmin, rmax))
+    
+    return grouped_ranges
+
+num_ranges = len(ranges)
+while True:
+    ranges = merge_ranges(ranges)
+    if num_ranges == len(ranges):
+        break
+    num_ranges = len(ranges)
+
+part2 = 0
+
+for (rmin, rmax) in ranges:
+    part2 += (rmax - rmin)+1
+
+print(part2)
+
 
 # print(ranges)
 # print(ingredients)
-print(part1)
+# print(part1)
