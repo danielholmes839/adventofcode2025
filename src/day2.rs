@@ -29,34 +29,33 @@ fn part2(ranges: &Vec<(i64, i64)>) -> i64 {
 
             // println!("check num: {}", n);
 
-            for pattern_length in 1..std::cmp::max(n_length/2, 2)+1 {
+            for pattern_length in 1..std::cmp::max(n_length / 2, 2) + 1 {
                 if pattern_length == n_length {
-                    continue
+                    continue;
                 }
 
                 if n_length % pattern_length != 0 {
                     // println!("skip #1 check: {} {}", n, pattern);
-                    continue
+                    continue;
                 }
 
                 let pattern = &str[0..pattern_length];
 
-                
                 // println!("check: {} {}", n, pattern);
 
                 let mut repeats = true;
 
-                for i in 0..(n_length/pattern_length) {
-                    if &str[i*pattern_length..(i+1)*pattern_length] != pattern {
+                for i in 0..(n_length / pattern_length) {
+                    if &str[i * pattern_length..(i + 1) * pattern_length] != pattern {
                         repeats = false;
-                        break
+                        break;
                     }
                 }
 
                 if repeats {
                     sum += n;
                     println!("for range {}-{}, {} {}", start, end, n, pattern);
-                    break
+                    break;
                 }
             }
         }
@@ -64,7 +63,6 @@ fn part2(ranges: &Vec<(i64, i64)>) -> i64 {
 
     sum
 }
-
 
 // number needs to be made of a repeating sequence
 
@@ -93,7 +91,6 @@ fn main() {
 
 mod tests {
     use crate::part2;
-
 
     #[test]
     fn tests() {
