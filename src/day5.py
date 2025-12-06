@@ -15,7 +15,7 @@ for line in lines:
     else:
         ingredients.append(ingredient_or_range[0])
 
-ranges = sorted(ranges, key=lambda r: r[0])
+
 
 
 part1 = 0
@@ -43,13 +43,9 @@ def merge_ranges(ranges):
     
     return grouped_ranges
 
-num_ranges = len(ranges)
-while True:
-    ranges = merge_ranges(ranges)
-    if num_ranges == len(ranges):
-        break
-    num_ranges = len(ranges)
-
+i = 0
+ranges = sorted(ranges, key=lambda r: r[0])
+ranges = merge_ranges(ranges)
 part2 = 0
 
 for (rmin, rmax) in ranges:
