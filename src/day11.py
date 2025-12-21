@@ -12,11 +12,9 @@ graph['out'] = []
 
 
 def part1(graph: dict[str, list[str]], start: str, end: str):
-
     memo = {}
 
     def count(node: str, destination: str):
-
         if node == destination:
             return 1
         
@@ -28,8 +26,6 @@ def part1(graph: dict[str, list[str]], start: str, end: str):
         return paths
     
     return count(start, end)
-
-
 
 
 def part2(graph: dict[str, list[str]]):
